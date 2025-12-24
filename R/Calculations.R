@@ -35,7 +35,7 @@ require(poppr)
 #' @export
 #'
 #' @examples
-#' TBD later
+#' TBD
 LocQual<-function(genpop, file=T, OutputHW=T, OutputNull=T, OutputFis=T, OutputPerLoc=T, NullTreshold=0.05){
 
 
