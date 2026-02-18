@@ -202,7 +202,7 @@ MRatio<-function(genal, file=T, output=T, popnames=NULL){
     pops<-levels(gens@pop)
   }
   locs<-levels(gens@loc.fac)
-  genssep<-seppop(gens, drop=T)
+  genssep<-adegenet::seppop(gens, drop=T)
   meansbypop<-c()
   Results<-list()
   for(i in 1:length(pops)){
