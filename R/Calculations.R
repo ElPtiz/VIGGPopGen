@@ -112,9 +112,9 @@ for(i in 1:npops){
   tempstat<-cbind(tempstat$perloc, tempstat$n.ind.samp)
   tempstat<-tempstat[,c("1", "Ho", "Hs", "Fis")]
   colnames(tempstat)<-c("n", "Ho", "Hs", "Fis")
-  tempstat<-tempstat%>%mutate(Xi=n*Fis^2)
-  tempstat<-tempstat%>%mutate(p=case_when(Xi>3.84&Xi<=6.63 ~ "*", Xi>6.63&Xi<=10.83 ~ "**", Xi>10.83 ~ "***", .default = "Non Significant"))
-  tempstat<-tempstat%>%mutate(p=case_when(p!="Non Significant"&Fis<0 ~ "Significantly negative!", .default = p))
+  tempstat<-tempstat%>%dplyr::mutate(Xi=n*Fis^2)
+  tempstat<-tempstat%>%dplyr::mutate(p=dplyr::case_when(Xi>3.84&Xi<=6.63 ~ "*", Xi>6.63&Xi<=10.83 ~ "**", Xi>10.83 ~ "***", .default = "Non Significant"))
+  tempstat<-tempstat%>%dplyr::mutate(p=dplyr::case_when(p!="Non Significant"&Fis<0 ~ "Significantly negative!", .default = p))
   for(k in 1:nloc){
     qualitytest[[k]][i, "Fis_significance"]<-tempstat[k, "p"]
   }
