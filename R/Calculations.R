@@ -213,10 +213,14 @@ MRatio<-function(genal, file=T, output=T, popnames=NULL){
       loc<-curgen@all.names[[curloc]]
       loc<-as.numeric(loc)
       loc<-sort(loc)
+      if(length(loc)<=2){
+        cat("***\nFor locus ", curloc, " in population ", pops[i], " there are 2 or less alleles. \nIt will not be used in M-Ratio calculation. \nConsider revising population structure for larger samples.\n")
+        GW[l]<-NA
+        }else{
       k<-curgen@loc.n.all[[curloc]]
       r<-diff(range(loc))/min(abs(diff(loc)))
       M<-k/(r+1)
-      GW[l]<-M
+      GW[l]<-M}
     }
     names(GW)<-locs
     GW["Mean"]<-mean(GW)
