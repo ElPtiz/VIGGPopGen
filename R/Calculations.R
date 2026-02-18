@@ -136,7 +136,7 @@ if(OutputFis==T){
 message("Summarising data for each locus")
 
 for(i in 1:nloc){
-  qualitytest[[i]]%<>%rowwise()%<>%mutate(overall=case_when(Hw_deviation<0.05&Null_allelle>NullTreshold&Fis_significance!="Non Significant"&Fis_significance!="Significantly negative!"~"*", .default = ""))
+  qualitytest[[i]]%<>%rowwise()%<>%dplyr::mutate(overall=dplyr::case_when(Hw_deviation<0.05&Null_allelle>NullTreshold&Fis_significance!="Non Significant"&Fis_significance!="Significantly negative!"~"*", .default = ""))
   tempdf<-qualitytest[[i]]
 
   message(paste0("Locus ", loci[i], " deviates by all three parameters in ", nrow(tempdf[tempdf$overall=="*",]), " out of ", npops))

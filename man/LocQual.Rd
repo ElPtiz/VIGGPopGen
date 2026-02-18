@@ -42,5 +42,5 @@ HW check and null-alleles are done using functions from packages pegas and PopGe
 If the locus shows deviation from HW, deviation of Fis from zero and null-alleles in half or more populations it's recommended to exclude it from population genetics analysis.
 }
 \examples{
-TBD later
+TBD
 }

@@ -1,7 +1,6 @@
 require(rentrez)
 require(rbibutils)
 
-
 #' Technical internal func
 #'
 #' @param x
@@ -72,7 +71,7 @@ parse_pmid_list<-function(x){
   i1<-1
   i2<-200
   while(i1<=length(x)){
-    currsum<-entrez_summary(db="pubmed", id=x[i1:i2])
+    currsum<-rentrez::entrez_summary(db="pubmed", id=x[i1:i2])
     currparsed<-parse_summary_list(currsum)
     reflist<-paste(reflist, currparsed, sep="\n")
     message(c("Parsed ", i2, " articles out of ", length(x)))
@@ -97,9 +96,9 @@ parse_pmid_list<-function(x){
 #' \dontrun{LitSearch("((animal migration[MeSH Terms] OR migrations[MeSH Terms]) AND(gene[All fields] OR gene[MeSH Terms] OR genetic[All fields] OR genetic[MeSH Terms] OR genetics[All fields] OR genetics[MeSH Terms]) AND (aves[ORGN] OR mammalia[ORGN]))")}
 LitSearch<-function(term){
 
-arts<- entrez_search(db="pubmed", term = term,
+arts<- rentrez::entrez_search(db="pubmed", term = term,
                      use_history = T, sort="pub_date")
-artinf<-entrez_fetch(db="pubmed", web_history = arts$web_history, rettype = "uilist", parsed = F)
+artinf<-rentrez::entrez_fetch(db="pubmed", web_history = arts$web_history, rettype = "uilist", parsed = F)
 artinf<-gsub("[\r\n]", ",", artinf)
 artinf<-strsplit(artinf, ",")
 artinf<-artinf[[1]]
