@@ -12,6 +12,7 @@ Imports:
     dplyr,
     hierfstat,
     magrittr,
+    mmod,
     pegas,
     PopGenReport,
     poppr,
