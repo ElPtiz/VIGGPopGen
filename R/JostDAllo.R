@@ -61,6 +61,7 @@ Allo.format<-function(x){
 }
 
 HtHsAllo<-function(x, nbp){
+  n<-length(nbp)
   harmN<-mmod::harmonic_mean(nbp[nbp >0])
   HpS <- mean(1 - rowSums(x^2))
   Hs_est <- (2*harmN/(2*harmN-1))*HpS
