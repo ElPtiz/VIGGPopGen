@@ -32,6 +32,9 @@ Returns a list with values for each locus as well as two global estimates.
 Because estimators of Hs and Ht are used, its possible to have negative
 estimates of D. You should treat these as numbers close to zero.
 }
+\examples{
+TBD
+}
 \references{
 Jost, L. (2008), GST and its relatives do not measure differentiation. Molecular Ecology, 17: 4015-4026.
 }

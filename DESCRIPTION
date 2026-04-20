@@ -19,6 +19,6 @@ Imports:
     rbibutils,
     rentrez
 Encoding: UTF-8
-imports: dplyr, magrittr, pegas, PopGenReport, hierfstat, poppr
+imports: dplyr, magrittr, pegas, PopGenReport, hierfstat, poppr, mmod
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3

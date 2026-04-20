@@ -19,11 +19,13 @@
 #' @param x freqency table in dataframe format. First column must contain population names, second number of samples per population.
 #' Rest of the columns contain alle frequencies and must have names formatted like "locusname_allelename".
 #' @export
-#' @examples
+#' @examples TBD
 #' @references
 #'  Jost, L. (2008), GST and its relatives do not measure differentiation. Molecular Ecology, 17: 4015-4026.
 #' @family diffstat
 #' @family D
+#' @importFrom mmod harmonic_mean
+#' @importFrom dplyr select
 
 
 D_Jost.Allo <- function(x, hsht_mean = "arithmetic"){
@@ -52,7 +54,7 @@ Allo.format<-function(x){
   locs%<>%unique()
   locsep<-list()
   for(i in 1:length(locs)){
-    currl<-dplyr::select(x, starts_with(locs[i]))
+    currl<-select(x, starts_with(locs[i]))
     rownames(currl)<-freqs[,1]
     locsep[[i]]<-currl
   }
@@ -61,7 +63,8 @@ Allo.format<-function(x){
 }
 
 HtHsAllo<-function(x, nbp){
-  harmN<-mmod::harmonic_mean(nbp[nbp >0])
+  n<-length(nbp)
+  harmN<-harmonic_mean(nbp[nbp >0])
   HpS <- mean(1 - rowSums(x^2))
   Hs_est <- (2*harmN/(2*harmN-1))*HpS
   HpT <- 1 - sum(colMeans(x)^2)
