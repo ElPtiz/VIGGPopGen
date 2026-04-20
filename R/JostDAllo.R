@@ -52,8 +52,7 @@ Allo.format<-function(x){
   locs%<>%unique()
   locsep<-list()
   for(i in 1:length(locs)){
-    currl<-select(x, starts_with(locs[i]))
-    #currl<-select(currl, !contains("null"))
+    currl<-dplyr::select(x, starts_with(locs[i]))
     rownames(currl)<-freqs[,1]
     locsep[[i]]<-currl
   }
